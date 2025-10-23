@@ -16,5 +16,5 @@ const user = {
 };
 //console.log(user.name);
 //console.log(user.hobbies);
-console.log(user.showHobbies());
-console.log(user.showHobbiesArrow());
+//user.showHobbies();
+user.showHobbiesArrow();
