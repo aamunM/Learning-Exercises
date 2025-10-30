@@ -9,6 +9,7 @@ function returnFunc() {
 const a = returnFunc();
 const b = a();
 
+//this example you will always be able to call the 'this.name' in the highest order function within all the child functions
 function returnFunc2(word) {
   this.name = word;
   return function func2() {
