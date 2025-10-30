@@ -26,4 +26,4 @@ reassignB();
 console.log("a :", a);
 console.log("b :", b);
 console.log("bWasSet: ", bWasSet);
-console.log("const ", random);
+//console.log("const ", random);
