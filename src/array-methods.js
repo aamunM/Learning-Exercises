@@ -66,10 +66,18 @@ const people = [
     occupation: "Student",
     hobbies: ["rugby", "space", "youtube"],
   },
+  {
+    name: null,
+    age: 21,
+    occupation: "Student",
+    hobbies: ["rugby", "space", "youtube"],
+  },
 ];
 
 //new variable "names", map method used on array above, function to return only names
-const names = people.map((person) => person.name);
+
+const returnNames = (a) => a.name;
+const names = people.map(returnNames);
 
 const allHobbies = people.map((person) => person.hobbies);
 
@@ -81,7 +89,8 @@ const returnHobby = (index) => people.map((person) => person.hobbies[index]);
 //console.log(returnHobby(1));
 
 //filter
-const ageAbove25 = people.filter((person) => person.age > 25);
+const returnOver25 = (person) => person.age > 25;
+const ageAbove25 = people.filter(returnOver25);
 
 const areQA = people.filter((person) => person.occupation === "QA");
 
@@ -95,9 +104,25 @@ const filterByName = (name) => people.filter((person) => person.name === name);
 //console.log(filterByName("John"));
 
 const numbers = [1, 2, 3, 4, 5];
+const returnDoubles = (num) => num * 2;
 
-const doubleNumbers = numbers.map((num) => num * 2);
+const doubleNumbers = numbers.map(returnDoubles);
 const cubedNumbers = numbers.map((num) => Math.pow(num, 3));
 const powerOfNumber = (power) => numbers.map((num) => Math.pow(num, power));
 
-console.log(powerOfNumber(3));
+//chain methods
+//return 3,4,5. Map over them and double them. should return 6, 8, 10
+const last3Nums = numbers.filter((num) => num >= 3).map(returnDoubles);
+
+//console.log(last3Nums);
+
+//console.log(powerOfNumber(3));
+
+//reduce
+const sumOfNumbers = numbers.reduce((prev, current) => {
+  console.log(`previous value = ${prev}, current value = ${current}`);
+  console.log(`result = ${prev + current}`);
+  return prev + current;
+});
+
+console.log(sumOfNumbers);
