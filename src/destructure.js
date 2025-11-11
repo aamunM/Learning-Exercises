@@ -1,3 +1,4 @@
+//Random Object with key values, arrays and another object
 const randomData = {
   id: 42,
   username: "skywalker",
@@ -12,6 +13,8 @@ const randomData = {
   },
 };
 
+//in this function object destructuring is happening for the two parameters 'Score' and 'Is Active'. A new instance of the object is created with these two parameters changed. This can happen with an Array too
+//the spread operator '...' creates a copy of all the properties in the object into a new instance of the object in the function.
 function updateProps({ score, isActive }) {
   return {
     ...randomData,
