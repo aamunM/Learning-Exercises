@@ -25,3 +25,63 @@ function updateProps({ score, isActive }) {
 const myData = updateProps(randomData);
 
 console.log(myData);
+
+//template for Destructuring
+
+const templatePerson = {
+  name: "Missing name",
+  age: 0,
+  isEmployed: false,
+};
+
+const assignGenderToPerson = (gender) => ({
+  ...templatePerson,
+  gender,
+});
+
+const templateMale = assignGenderToPerson("male");
+const templateFemale = assignGenderToPerson("female");
+const templateOther = assignGenderToPerson("other");
+
+function buildPerson(startingData, overwrites) {
+  return {
+    ...startingData,
+    ...overwrites,
+    hasBeenBuiltByFunciton: true,
+  };
+}
+
+const aamun = buildPerson(templateMale, {
+  name: "Aamun",
+  age: 30,
+  isEmployed: true,
+  gender: "other",
+});
+
+const jack = buildPerson(templateFemale, {
+  name: "jack",
+  age: 3,
+});
+
+console.log(aamun);
+console.log(jack);
+
+// ----
+
+function handleUnemployment() {
+  return ["You are unemployed", "Find a new job"];
+}
+
+function returnPersonsEmployment({ isEmployed, name }) {
+  return isEmployed
+    ? `${name} is employed`
+    : `${name} - ${handleUnemployment().join(" - ")}`;
+}
+
+function returnPersonsEmploymentt(personObj) {
+  return personObj.isEmployed
+    ? `${personObj.name} is employed`
+    : `${personObj.name} - ${handleUnemployment().join(" - ")}`;
+}
+
+returnPersonsEmployment(jack);

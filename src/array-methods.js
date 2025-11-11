@@ -119,10 +119,21 @@ const last3Nums = numbers.filter((num) => num >= 3).map(returnDoubles);
 //console.log(powerOfNumber(3));
 
 //reduce
-const sumOfNumbers = numbers.reduce((prev, current) => {
+// const sumOfNumbers = numbers.reduce((prev, current) => {
+//   console.log(`previous value = ${prev}, current value = ${current}`);
+//   console.log(`result = ${prev + current}`);
+//   return prev + current;
+// });
+
+//console.log(sumOfNumbers);
+
+const largestValue = numbers.reduce((prev, current) => {
   console.log(`previous value = ${prev}, current value = ${current}`);
-  console.log(`result = ${prev + current}`);
-  return prev + current;
+  if (current > prev) {
+    return current;
+  } else {
+    return prev;
+  }
 });
 
-console.log(sumOfNumbers);
+console.log(largestValue);
