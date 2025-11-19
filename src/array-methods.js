@@ -127,13 +127,13 @@ const last3Nums = numbers.filter((num) => num >= 3).map(returnDoubles);
 
 //console.log(sumOfNumbers);
 
-const largestValue = numbers.reduce((prev, current) => {
-  console.log(`previous value = ${prev}, current value = ${current}`);
-  if (current > prev) {
-    return current;
-  } else {
-    return prev;
-  }
-});
+const largestValue = numbers.reduce(
+  (prev, current) => (current > prev ? current : prev),
+  0
+);
 
-console.log(largestValue);
+//console.log(largestValue);
+
+const largestValueReal = Math.max(...numbers);
+
+console.log(largestValueReal);
