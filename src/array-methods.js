@@ -103,7 +103,7 @@ const filterByName = (name) => people.filter((person) => person.name === name);
 
 //console.log(filterByName("John"));
 
-const numbers = [1, 2, 3, 4, 5];
+const numbers = [1, 2, 8, 4, 5];
 const returnDoubles = (num) => num * 2;
 
 const doubleNumbers = numbers.map(returnDoubles);
