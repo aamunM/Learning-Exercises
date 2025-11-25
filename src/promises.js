@@ -34,7 +34,7 @@ function personPromise() {
 const hasLeftJob = true;
 const findingNewJob = true;
 const hasFoundNewJob = true;
-const hasStartedNewJob = false;
+const hasStartedNewJob = true;
 
 function leaveJob() {
   return new Promise((resolve, reject) => {
@@ -76,21 +76,67 @@ function startNewJob() {
   });
 }
 
-leaveJob()
-  .then((message) => {
-    console.log(message);
-    return findNewJob();
-  })
-  .then((message) => {
-    console.log(message);
-    return foundNewJob();
-  })
-  .then((message) => {
-    console.log(message);
-    return startNewJob();
-  })
-  .then((message) => {
-    console.log(message);
-    console.log("Guy is all set");
-  })
-  .catch((error) => console.error(error));
+// leaveJob()
+//   .then((message) => {
+//     console.log(message);
+//     return findNewJob();
+//   })
+//   .then((message) => {
+//     console.log(message);
+//     return foundNewJob();
+//   })
+//   .then((message) => {
+//     console.log(message);
+//     return startNewJob();
+//   })
+//   .then((message) => {
+//     console.log(message);
+//     console.log("Guy is all set");
+//   })
+//   .catch((error) => console.error(error))
+
+//New Promise
+
+const userData = {
+  userID: "ABC123",
+  userName: "Aamun",
+  userComment: "Testing random Promises",
+  userPost: "Post Message",
+};
+
+function getAllUserData() {
+  return new Promise((resolve, reject) => {
+    if (userData.userName) {
+      resolve(userData.userName);
+    } else {
+      reject("Error");
+    }
+  });
+}
+
+// const promise = getAllUserData();
+// promise
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch(function (err) {
+//     console.log(err);
+//   })
+//   .finally(function () {
+//     console.log("Finished");
+//   });
+
+function getNewDogFacts() {
+  return new Promise((res, rej) => {
+    const url = "https://dogapi.dog/api/v2/breeds";
+    const response = fetch(url);
+
+    response
+      .then((data) => res(data.json()))
+      .catch((err) => rej(err.statusText));
+  });
+}
+
+getNewDogFacts()
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err));
