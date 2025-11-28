@@ -126,17 +126,54 @@ function getAllUserData() {
 //     console.log("Finished");
 //   });
 
-function getNewDogFacts() {
+function getDogFacts(breedId = "") {
   return new Promise((res, rej) => {
-    const url = "https://dogapi.dog/api/v2/breeds";
+    const url = `https://dogapi.dog/api/v2/breeds/${breedId}`;
     const response = fetch(url);
 
     response
-      .then((data) => res(data.json()))
-      .catch((err) => rej(err.statusText));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => res(data))
+      .catch((err) => rej(`Error: ${err.message}`));
   });
 }
 
-getNewDogFacts()
-  .then((data) => console.log(data))
+const allDogs = getDogFacts();
+const afghanHoundDog = getDogFacts("dd9362cc-52e0-462d-b856-fccdcf24b140");
+const dreverDog = getDogFacts("bc97ff27-930e-4d3a-95a8-5a8f2ad4c0e2");
+
+afghanHoundDog
+  .then(
+    ({
+      data: {
+        attributes: { description, name },
+      },
+    }) => {
+      //console.log(data);
+      console.log("Breed Name: ", name);
+      console.log("Description: ", description);
+      //console.log(
+      //   "Life Span:",
+      //   data.attributes.life.min,
+      //   "-",
+      //   data.attributes.life.max,
+      //   "years"
+      // );
+      // console.log("Hypoallergenic: ", data.attributes.hypoallergenic);
+    }
+  )
   .catch((err) => console.error(err));
+
+// allDogs
+//   .then(({ data }) => console.log(data))
+//   .catch((err) => console.error(err));
+
+dreverDog.then(({ data: { attributes } }) => {
+  console.log(`Name: ${attributes.name}`);
+  console.log(`Description: ${attributes.description}`);
+});
