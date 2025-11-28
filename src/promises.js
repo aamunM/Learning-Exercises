@@ -151,20 +151,13 @@ afghanHoundDog
   .then(
     ({
       data: {
-        attributes: { description, name },
+        attributes: { description, name, life, hypoallergenic },
       },
     }) => {
-      //console.log(data);
       console.log("Breed Name: ", name);
       console.log("Description: ", description);
-      //console.log(
-      //   "Life Span:",
-      //   data.attributes.life.min,
-      //   "-",
-      //   data.attributes.life.max,
-      //   "years"
-      // );
-      // console.log("Hypoallergenic: ", data.attributes.hypoallergenic);
+      console.log("Life Span:", life.min, "-", life.max, "years");
+      console.log("Hypoallergenic: ", hypoallergenic);
     }
   )
   .catch((err) => console.error(err));
