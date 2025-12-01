@@ -144,29 +144,53 @@ function getDogFacts(breedId = "") {
 }
 
 const allDogs = getDogFacts();
-const afghanHoundDog = getDogFacts("dd9362cc-52e0-462d-b856-fccdcf24b140");
-const dreverDog = getDogFacts("bc97ff27-930e-4d3a-95a8-5a8f2ad4c0e2");
+const DOG_IDS = {
+  drever: "bc97ff27-930e-4d3a-95a8-5a8f2ad4c0e2",
+  afghanHound: "dd9362cc-52e0-462d-b856-fccdcf24b140",
+};
+const afghanHoundDog = getDogFacts(DOG_IDS.afghanHound);
+const dreverDog = getDogFacts(DOG_IDS.drever);
 
-afghanHoundDog
-  .then(
-    ({
-      data: {
-        attributes: { description, name, life, hypoallergenic },
-      },
-    }) => {
-      console.log("Breed Name: ", name);
-      console.log("Description: ", description);
-      console.log("Life Span:", life.min, "-", life.max, "years");
-      console.log("Hypoallergenic: ", hypoallergenic);
-    }
-  )
-  .catch((err) => console.error(err));
+async function getAllDogsAsync() {
+  const afghanHoundDog = await getDogFacts(DOG_IDS.afghanHound);
+  const dreverDog = await getDogFacts(DOG_IDS.drever);
+  return {
+    drever: dreverDog.data,
+    afghanHound: afghanHoundDog.data,
+    pug: "test",
+  };
+}
+
+getAllDogsAsync().then((data) => {
+  const pug = data.pug;
+  //console.log(pug);
+  if (pug) {
+    console.log("made it");
+  } else {
+    console.log("not there");
+  }
+});
+
+// afghanHoundDog
+//   .then(
+//     ({
+//       data: {
+//         attributes: { description, name, life, hypoallergenic },
+//       },
+//     }) => {
+//       console.log("Breed Name: ", name);
+//       console.log("Description: ", description);
+//       console.log("Life Span:", life.min, "-", life.max, "years");
+//       console.log("Hypoallergenic: ", hypoallergenic);
+//     }
+//   )
+//   .catch((err) => console.error(err));
 
 // allDogs
 //   .then(({ data }) => console.log(data))
 //   .catch((err) => console.error(err));
 
-dreverDog.then(({ data: { attributes } }) => {
-  console.log(`Name: ${attributes.name}`);
-  console.log(`Description: ${attributes.description}`);
-});
+// dreverDog.then(({ data: { attributes } }) => {
+//   console.log(`Name: ${attributes.name}`);
+//   console.log(`Description: ${attributes.description}`);
+// });
