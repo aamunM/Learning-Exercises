@@ -1,0 +1,52 @@
+{
+  "admins": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "age": 28,
+      "address": {
+        "street": "123 Main Street",
+        "city": "London",
+        "postcode": "SW1A 1AA",
+        "country": "United Kingdom"
+      },
+      "phone": "+44 20 1234 5678",
+      "isActive": true,
+      "isAdmin": true,
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "age": 32,
+      "address": {
+        "street": "456 High Road",
+        "city": "Manchester",
+        "postcode": "M1 1AA",
+        "country": "United Kingdom"
+      },
+      "phone": "+44 161 1234 5678",
+      "isActive": true,
+      "isAdmin": true,
+      "createdAt": "2024-02-20T14:15:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "email": "bob.johnson@example.com",
+      "age": 45,
+      "address": {
+        "street": "789 Park Avenue",
+        "city": "Birmingham",
+        "postcode": "B1 1AA",
+        "country": "United Kingdom"
+      },
+      "phone": "+44 121 1234 5678",
+      "isActive": false,
+      "isAdmin": false,
+      "createdAt": "2023-12-10T09:00:00Z"
+    }
+  ]
+}
